@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+
+{% block title %}
+
+<p>HELLO</p>
+
+{% endblock %}
+
+{% block content %}
+{% if var2 == 2 %}
+<p>A</p>
+{% elif var2 == 3 %}
+<p>b</p>
+{% else %}
+<p>c</p>
+{% endif %}
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.db.models import Q, Sum, Count
 from . import models
 
 def test(request):
@@ -36,3 +37,14 @@ def page1(request, num):
 
     return HttpResponse(temp.render({"objs": objs}))
 
+def page2(request):
+
+    obj = models.test.objects.filter(id__gte=1).order_by("-id").exclude(lastname="Mosavi").values()
+    obj = models.test.objects.filter(Q(id__gte=1), Q(id=3)).values()
+    obj = models.test.objects.values('firstname').annotate(count=Sum("id"))
+    obj = models.test.objects.filter(address__st="Tehran").values()
+    print(obj)
+
+
+    tmp = loader.get_template('page2.html')
+    return HttpResponse(tmp.render({"var2":2}))
