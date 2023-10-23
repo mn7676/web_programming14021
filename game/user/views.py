@@ -3,6 +3,25 @@ from django.http import HttpResponse
 from django.template import loader
 from django.db.models import Q, Sum, Count
 from . import models
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from . import serializers
+
+class TestApi(APIView):
+    def get(self, request):
+        print("GET")
+        obj = models.test.objects.filter(id=3).first()
+        se = serializers.TestApi(obj, many=True)
+        return Response(se.data, status.HTTP_200_OK)
+
+    def post(self, request):
+        print("POST")
+        se = serializers.TestApi(data=request.data)
+        if se.is_valid():
+            se.save()
+            return Response(se.data, status.HTTP_200_OK)
+        return Response(se.errors, status.HTTP_400_BAD_REQUEST)
 
 def test(request):
     obj = models.test(firstname= "Mohammad", lastname="Nazari")
