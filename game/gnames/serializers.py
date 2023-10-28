@@ -2,6 +2,18 @@ from rest_framework.serializers import ModelSerializer
 from rest_framework.serializers import ValidationError
 from . import models
 
+
+class Competition(ModelSerializer):
+    class Meta:
+        model = models.Competition
+        fields = '__all__'
+
+
+class Participation(ModelSerializer):
+    class Meta:
+        model = models.Participation
+        fields = '__all__'
+
 # class TestApi(ModelSerializer):
 #
 #     class Meta:

@@ -3,8 +3,7 @@ from . import models
 
 # Register your models here.
 
-class AdminTest(admin.ModelAdmin):
-    list_display = ("firstname", "phone")
+# class AdminTest(admin.ModelAdmin):
+#     list_display = ("firstname", "phone")
 
-admin.site.register(models.Address)
-admin.site.register(models.test, AdminTest)
+admin.site.register(models.User)
