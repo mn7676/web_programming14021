@@ -14,6 +14,12 @@ class Participation(ModelSerializer):
         model = models.Participation
         fields = '__all__'
 
+
+class Paper(ModelSerializer):
+    class Meta:
+        model = models.Paper
+        fields = '__all__'
+
 # class TestApi(ModelSerializer):
 #
 #     class Meta:

@@ -20,7 +20,7 @@ class Participation(models.Model):
 
 class Paper(models.Model):
     class Type:
-        FNAME = "firs_name"
+        FNAME = "first_name"
         LNAME = "last_name"
         CITY = "city"
         COUNTRY = "country"
@@ -41,3 +41,6 @@ class Paper(models.Model):
     value = models.CharField(max_length=50, blank=True, null=True)
     score = models.IntegerField(null=True)
     date = models.DateTimeField(default=timezone.localtime, blank=True)
+
+    class Meta:
+        unique_together = (('type', 'player', 'competition'),)

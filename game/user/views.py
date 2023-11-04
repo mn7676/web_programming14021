@@ -8,6 +8,8 @@ from rest_framework.authtoken.models import Token as RestToken
 
 
 class Users(APIView):
+    permission_classes =()
+
     def post(self, request):
 
         username = request.data["username"]
