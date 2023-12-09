@@ -33,6 +33,7 @@ class Users(APIView):
 
 
 class Token(APIView):
+    permission_classes =()
     def post(self, request):
 
         data = {
